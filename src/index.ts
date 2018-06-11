@@ -3,6 +3,5 @@ function printHello() {
     const messageText:string = 'Hello Webpack!';
     message.innerHTML = messageText;    
     document.body.appendChild(message);
-    console.log(messageText);
 }
 printHello();
