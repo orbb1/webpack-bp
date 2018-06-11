@@ -1,0 +1,22 @@
+{
+  "name": "webpack-bp",
+  "version": "1.0.0",
+  "description": "webpack boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbb1/webpack-bp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orbb1/webpack-bp/issues"
+  },
+  "homepage": "https://github.com/orbb1/webpack-bp#readme",
+  "dependencies": {
+    "webpack": "^4.12.0"
+  }
+}
