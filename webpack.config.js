@@ -1,10 +1,18 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.ts',
   devtool: 'inline-source-map',
+  devServer: {
+    contentBase: ['./dist'],
+    port: 8080,
+    inline: false,
+    hot: false
+  },
+  mode: 'development',
   module: {
     rules: [{
       test: /\.tsx?$/,
@@ -16,7 +24,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Webpack Boilerplate'
     }),
-    new CleanWebpackPlugin(['dist'])
+    new CleanWebpackPlugin(['dist']),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
     extensions: ['.tsx', '.ts']
