@@ -7,10 +7,10 @@ module.exports = {
   entry: './src/index.ts',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: ['./dist'],
+    contentBase: path.resolve(__dirname, 'dist'),
     port: 8080,
     inline: false,
-    hot: false
+    hot: true
   },
   mode: 'development',
   module: {
@@ -18,7 +18,25 @@ module.exports = {
       test: /\.tsx?$/,
       use: 'ts-loader',
       exclude: /node_modules/
-    }]
+    }, {
+      test: /\.css$/,
+      use: [
+        { loader: 'style-loader' },
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true
+          }
+        }
+      ]
+    },{
+      test: /\.scss$/,
+      use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+      ]
+  }]
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -29,7 +47,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
-    extensions: ['.tsx', '.ts']
+    extensions: ['.tsx', '.ts', '.css']
   },
   output: {
     filename: 'bundle.js',
