@@ -21,19 +21,28 @@ module.exports = {
     }, {
       test: /\.css$/,
       use: [
-        { loader: 'style-loader' },
+        'style-loader',
         {
           loader: 'css-loader',
           options: {
             modules: true
           }
-        }
+        },
+        'postcss-loader'
       ]
     },{
       test: /\.scss$/,
       use: [
           "style-loader",
           "css-loader",
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: './postcss.config.js'
+              }
+            }
+          },
           "sass-loader"
       ]
   }]
